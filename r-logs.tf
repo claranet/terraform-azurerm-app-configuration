@@ -1,6 +1,6 @@
 module "diagnostics" {
-  source  = "claranet/diagnostic-settings/azurerm"
-  version = "~> 6.4.1"
+  source = "claranet/diagnostic-settings/azurerm"
+  # version = "~> 6.4.1"
 
   resource_id = azurerm_app_configuration.app_configuration.id
 

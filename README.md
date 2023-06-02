@@ -1,7 +1,7 @@
 # App Configuration
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/app-configuration/azurerm/)
 
-Azure module to generate a [App Configuration](https://docs.microsoft.com/en-us/azure/xxxxxxx).
+Azure module to deploy a [App Configuration](https://docs.microsoft.com/en-us/azure/xxxxxxx).
 
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
@@ -93,7 +93,7 @@ module "app_configuration" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| diagnostics | claranet/diagnostic-settings/azurerm | ~> 6.4.1 |
+| diagnostics | claranet/diagnostic-settings/azurerm | n/a |
 
 ## Resources
 
@@ -106,6 +106,8 @@ module "app_configuration" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| allowed\_cidrs | List of allowed CIDR ranges to access the App Configuration resource. | `list(string)` | `[]` | no |
+| allowed\_subnet\_ids | List of allowed subnets IDs to access the App Configuration resource. | `list(string)` | `[]` | no |
 | client\_name | Client name/account used in naming. | `string` | n/a | yes |
 | custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | custom\_name | Custom App Configuration, generated if not set | `string` | `""` | no |
@@ -120,6 +122,8 @@ module "app_configuration" {
 | logs\_retention\_days | Number of days to keep logs on storage account. | `number` | `30` | no |
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
+| network\_bypass | Specify whether traffic is bypassed for 'Logging', 'Metrics', 'AzureServices' or 'None'. | `list(string)` | <pre>[<br>  "Logging",<br>  "Metrics",<br>  "AzureServices"<br>]</pre> | no |
+| public\_network\_access\_enabled | Whether the App Configuration is available from public network. | `bool` | `false` | no |
 | resource\_group\_name | Name of the resource group. | `string` | n/a | yes |
 | stack | Project stack name. | `string` | n/a | yes |
 
@@ -127,7 +131,9 @@ module "app_configuration" {
 
 | Name | Description |
 |------|-------------|
+| app\_configuration | App Configuration output object |
 | id | App Configuration ID |
+| identity\_principal\_id | App Configuration system identity principal ID |
 | name | App Configuration name |
 <!-- END_TF_DOCS -->
 
