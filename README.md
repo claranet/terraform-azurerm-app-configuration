@@ -1,7 +1,7 @@
-# App Configuration
+# Azure App Configuration
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/app-configuration/azurerm/)
 
-Azure module to deploy a [App Configuration](https://docs.microsoft.com/en-us/azure/xxxxxxx).
+Azure module to deploy an [Azure App Configuration](https://learn.microsoft.com/en-us/azure/azure-app-configuration/overview).
 
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
@@ -57,6 +57,8 @@ module "run" {
   location            = module.azure_region.location
   location_short      = module.azure_region.location_short
   resource_group_name = module.rg.resource_group_name
+
+  monitoring_function_enabled = false
 }
 
 module "app_configuration" {
@@ -93,7 +95,7 @@ module "app_configuration" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| diagnostics | claranet/diagnostic-settings/azurerm | n/a |
+| diagnostics | claranet/diagnostic-settings/azurerm | ~> 6.4.1 |
 
 ## Resources
 
@@ -106,14 +108,14 @@ module "app_configuration" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| allowed\_cidrs | List of allowed CIDR ranges to access the App Configuration resource. | `list(string)` | `[]` | no |
-| allowed\_subnet\_ids | List of allowed subnets IDs to access the App Configuration resource. | `list(string)` | `[]` | no |
 | client\_name | Client name/account used in naming. | `string` | n/a | yes |
 | custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | custom\_name | Custom App Configuration, generated if not set | `string` | `""` | no |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | environment | Project environment. | `string` | n/a | yes |
 | extra\_tags | Additional tags to add on resources. | `map(string)` | `{}` | no |
+| identity\_type | App configuration identity type. Possible values are `null` and `SystemAssigned`. | `string` | `"SystemAssigned"` | no |
+| local\_auth\_enabled | Whether local authentication methods is enabled. Defaults to `false`. | `bool` | `false` | no |
 | location | Azure region to use. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
@@ -122,9 +124,11 @@ module "app_configuration" {
 | logs\_retention\_days | Number of days to keep logs on storage account. | `number` | `30` | no |
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
-| network\_bypass | Specify whether traffic is bypassed for 'Logging', 'Metrics', 'AzureServices' or 'None'. | `list(string)` | <pre>[<br>  "Logging",<br>  "Metrics",<br>  "AzureServices"<br>]</pre> | no |
 | public\_network\_access\_enabled | Whether the App Configuration is available from public network. | `bool` | `false` | no |
+| purge\_protection\_enabled | Whether Purge Protection is enabled. This field only works for `standard` SKU. Defaults to `false`. | `bool` | `false` | no |
 | resource\_group\_name | Name of the resource group. | `string` | n/a | yes |
+| sku | The SKU name of the App Configuration. Possible values are `free` and `standard`. Defaults to `standard`. | `string` | `"standard"` | no |
+| soft\_delete\_retention\_days | The number of days that items should be retained for once soft-deleted. This field only works for `standard` sku. This value can be between `1 and 7` days. Defaults to 7. Changing this forces a new resource to be created. | `number` | `7` | no |
 | stack | Project stack name. | `string` | n/a | yes |
 
 ## Outputs
@@ -132,11 +136,16 @@ module "app_configuration" {
 | Name | Description |
 |------|-------------|
 | app\_configuration | App Configuration output object |
+| endpoint | App Configuration Endpoint URL |
 | id | App Configuration ID |
 | identity\_principal\_id | App Configuration system identity principal ID |
 | name | App Configuration name |
+| primary\_read\_key | App Configuration primary read key |
+| primary\_write\_key | App Configuration primary write key |
+| secondary\_read\_key | App Configuration secondary read key |
+| secondary\_write\_key | App Configuration secondary write key |
 <!-- END_TF_DOCS -->
 
 ## Related documentation
 
-Microsoft Azure documentation: xxxx
+Microsoft Azure documentation: [learn.microsoft.com/en-us/azure/azure-app-configuration/overview](https://learn.microsoft.com/en-us/azure/azure-app-configuration/overview)
