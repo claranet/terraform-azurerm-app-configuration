@@ -25,6 +25,8 @@ module "run" {
   location            = module.azure_region.location
   location_short      = module.azure_region.location_short
   resource_group_name = module.rg.resource_group_name
+
+  monitoring_function_enabled = false
 }
 
 module "app_configuration" {
