@@ -1,3 +1,8 @@
+# Unreleased
+
+Added
+  * AZ-1379: Add replication options
+
 # v7.0.0 - 2023-07-07
 
 Added

@@ -33,3 +33,25 @@ variable "identity_type" {
   type        = string
   default     = "SystemAssigned"
 }
+
+variable "paired_region_replication_enabled" {
+  description = "Whether replication is enabled on paired region."
+  type        = bool
+  default     = false
+}
+
+variable "paired_region_replication_replica_custom_name" {
+  description = "Custom replica name on paired region."
+  type        = string
+  default     = null
+}
+
+variable "custom_replica" {
+  description = "Create one or multiple custom AppConfig replica."
+  type = list(object({
+    location = string
+    name     = string
+  }))
+  default  = []
+  nullable = false
+}
