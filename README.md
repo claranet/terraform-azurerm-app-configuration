@@ -78,6 +78,15 @@ module "app_configuration" {
     module.run.log_analytics_workspace_id
   ]
 
+  paired_region_replication_enabled = true
+
+  custom_replica = [
+    {
+      location = "westeurope"
+      name     = "euwest"
+    }
+  ]
+
   extra_tags = {
     foo = "bar"
   }
@@ -89,12 +98,13 @@ module "app_configuration" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.2, >= 1.2.22 |
-| azurerm | ~> 3.39 |
+| azurerm | ~> 3.74 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
+| azure\_region | claranet/regions/azurerm | ~> 7.1.1 |
 | diagnostics | claranet/diagnostic-settings/azurerm | ~> 6.5.0 |
 
 ## Resources
@@ -111,6 +121,7 @@ module "app_configuration" {
 | client\_name | Client name/account used in naming. | `string` | n/a | yes |
 | custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | custom\_name | Custom App Configuration, generated if not set | `string` | `""` | no |
+| custom\_replica | Create one or multiple custom AppConfig replica. | <pre>list(object({<br>    location = string<br>    name     = string<br>  }))</pre> | `[]` | no |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | environment | Project environment. | `string` | n/a | yes |
 | extra\_tags | Additional tags to add on resources. | `map(string)` | `{}` | no |
@@ -123,6 +134,8 @@ module "app_configuration" {
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
+| paired\_region\_replication\_enabled | Whether replication is enabled on paired region. | `bool` | `false` | no |
+| paired\_region\_replication\_replica\_custom\_name | Custom replica name on paired region. | `string` | `null` | no |
 | public\_network\_access\_enabled | Whether the App Configuration is available from public network. | `bool` | `false` | no |
 | purge\_protection\_enabled | Whether Purge Protection is enabled. This field only works for `standard` SKU. Defaults to `false`. | `bool` | `false` | no |
 | resource\_group\_name | Name of the resource group. | `string` | n/a | yes |

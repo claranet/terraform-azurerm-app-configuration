@@ -18,5 +18,21 @@ resource "azurerm_app_configuration" "app_configuration" {
     }
   }
 
+  dynamic "replica" {
+    for_each = var.custom_replica[*]
+    content {
+      location = replica.value.location
+      name     = replica.value.name
+    }
+  }
+
+  dynamic "replica" {
+    for_each = var.paired_region_replication_enabled ? ["paired_region_replication"] : []
+    content {
+      location = module.azure_region.paired_location.location_cli
+      name     = coalesce(var.paired_region_replication_replica_custom_name, module.azure_region.paired_location.location_short)
+    }
+  }
+
   tags = merge(local.default_tags, var.extra_tags)
 }

@@ -46,6 +46,15 @@ module "app_configuration" {
     module.run.log_analytics_workspace_id
   ]
 
+  paired_region_replication_enabled = true
+
+  custom_replica = [
+    {
+      location = "westeurope"
+      name     = "euwest"
+    }
+  ]
+
   extra_tags = {
     foo = "bar"
   }
