@@ -121,7 +121,7 @@ module "app_configuration" {
 | client\_name | Client name/account used in naming. | `string` | n/a | yes |
 | custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | custom\_name | Custom App Configuration, generated if not set | `string` | `""` | no |
-| custom\_replica | Create one or multiple custom AppConfig replica. | <pre>list(object({<br>    location = string<br>    name     = string<br>  }))</pre> | `[]` | no |
+| custom\_replica | Create one or multiple custom AppConfig replica. | <pre>list(object({<br/>    location = string<br/>    name     = string<br/>  }))</pre> | `[]` | no |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | environment | Project environment. | `string` | n/a | yes |
 | extra\_tags | Additional tags to add on resources. | `map(string)` | `{}` | no |
@@ -130,7 +130,7 @@ module "app_configuration" {
 | location | Azure region to use. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
-| logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `|` character. | `list(string)` | n/a | yes |
+| logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `|` character. | `list(string)` | n/a | yes |
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
