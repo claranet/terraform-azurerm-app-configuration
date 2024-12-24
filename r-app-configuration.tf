@@ -1,5 +1,5 @@
-resource "azurerm_app_configuration" "app_configuration" {
-  name = local.app_configuration_name
+resource "azurerm_app_configuration" "main" {
+  name = local.name
 
   location            = var.location
   resource_group_name = var.resource_group_name
@@ -12,9 +12,10 @@ resource "azurerm_app_configuration" "app_configuration" {
   local_auth_enabled         = var.local_auth_enabled
 
   dynamic "identity" {
-    for_each = var.identity_type[*]
+    for_each = var.identity[*]
     content {
-      type = var.identity_type
+      type         = identity.value.type
+      identity_ids = endswith(var.identity.type, "UserAssigned") ? identity.value.identity_ids : null
     }
   }
 
@@ -35,4 +36,9 @@ resource "azurerm_app_configuration" "app_configuration" {
   }
 
   tags = merge(local.default_tags, var.extra_tags)
+}
+
+moved {
+  from = azurerm_app_configuration.app_configuration
+  to   = azurerm_app_configuration.main
 }
