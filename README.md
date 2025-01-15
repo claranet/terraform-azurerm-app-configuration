@@ -108,7 +108,7 @@ module "app_configuration" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| azure\_region | claranet/regions/azurerm | ~> 7.2.0 |
+| azure\_region | claranet/regions/azurerm | ~> 7.3.0 |
 | diagnostics | claranet/diagnostic-settings/azurerm | ~> 7.0.0 |
 
 ## Resources
