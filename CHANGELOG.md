@@ -1,3 +1,46 @@
+## 8.0.0 (2025-02-07)
+
+### ⚠ BREAKING CHANGES
+
+* **AZ-1088:** module v8 structure and updates
+
+### Features
+
+* **AZ-1088:** module v8 structure and updates 45760be
+
+### Miscellaneous Chores
+
+* **deps:** update dependency claranet/diagnostic-settings/azurerm to v7 b7fea1e
+* **deps:** update dependency opentofu to v1.8.3 5336547
+* **deps:** update dependency opentofu to v1.8.4 2410349
+* **deps:** update dependency opentofu to v1.8.6 ad23ff5
+* **deps:** update dependency opentofu to v1.8.8 719708f
+* **deps:** update dependency opentofu to v1.9.0 bb9d807
+* **deps:** update dependency pre-commit to v4 6fb0866
+* **deps:** update dependency pre-commit to v4.0.1 d5b0aa9
+* **deps:** update dependency pre-commit to v4.1.0 2c3f9bf
+* **deps:** update dependency tflint to v0.54.0 81f94d5
+* **deps:** update dependency tflint to v0.55.0 d288353
+* **deps:** update dependency trivy to v0.56.1 da01a55
+* **deps:** update dependency trivy to v0.56.2 05c6260
+* **deps:** update dependency trivy to v0.57.1 bd983b7
+* **deps:** update dependency trivy to v0.58.1 6be54ef
+* **deps:** update dependency trivy to v0.58.2 1946cd5
+* **deps:** update dependency trivy to v0.59.1 549961b
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.19.0 40816a2
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.20.0 d317764
+* **deps:** update pre-commit hook pre-commit/pre-commit-hooks to v5 2f3e3e8
+* **deps:** update pre-commit hook tofuutils/pre-commit-opentofu to v2.1.0 c553318
+* **deps:** update terraform claranet/regions/azurerm to ~> 7.3.0 a123b2c
+* **deps:** update tools d8a4c93
+* **deps:** update tools f21ed46
+* **deps:** update tools e313e0b
+* prepare for new examples structure 309614a
+* update examples structure b1a29d4
+* update Github templates a77eb84
+* update TF minimum version to v1.3+ 0bae1d2
+* update tflint config for v0.55.0 de1ecd9
+
 ## 7.2.0 (2024-10-03)
 
 ### Features
