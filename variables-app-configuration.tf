@@ -28,10 +28,18 @@ variable "local_auth_enabled" {
   default     = false
 }
 
-variable "identity_type" {
-  description = "App configuration identity type. Possible values are `null` and `SystemAssigned`."
-  type        = string
-  default     = "SystemAssigned"
+variable "identity" {
+  description = "Identity block information as described in this [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_configuration#identity-1)."
+  type = object({
+    type         = optional(string, "SystemAssigned")
+    identity_ids = optional(list(string))
+  })
+  default = {}
+
+  validation {
+    condition     = var.identity == null || contains(["SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned"], try(var.identity.type, "SystemAssigned"))
+    error_message = "`var.identity.type` must be one of 'SystemAssigned', 'UserAssigned' or 'SystemAssigned, UserAssigned'."
+  }
 }
 
 variable "paired_region_replication_enabled" {
