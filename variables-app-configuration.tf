@@ -63,3 +63,15 @@ variable "custom_replica" {
   default  = []
   nullable = false
 }
+
+variable "data_plane_proxy_authentication_mode" {
+  description = "The data plane proxy authentication mode."
+  type        = string
+  default     = "Local"
+}
+
+variable "data_plane_proxy_private_link_delegation_enabled" {
+  description = "Whether data plane proxy private link delegation is enabled."
+  type        = bool
+  default     = false
+}

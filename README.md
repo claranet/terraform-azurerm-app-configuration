@@ -72,7 +72,7 @@ module "app_configuration" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.2.28 |
-| azurerm | ~> 4.0 |
+| azurerm | ~> 4.19 |
 
 ## Modules
 
@@ -95,6 +95,8 @@ module "app_configuration" {
 | client\_name | Client name/account used in naming. | `string` | n/a | yes |
 | custom\_name | Custom App Configuration, generated if not set. | `string` | `""` | no |
 | custom\_replica | Create one or multiple custom AppConfig replica. | <pre>list(object({<br/>    location = string<br/>    name     = string<br/>  }))</pre> | `[]` | no |
+| data\_plane\_proxy\_authentication\_mode | The data plane proxy authentication mode. | `string` | `"Local"` | no |
+| data\_plane\_proxy\_private\_link\_delegation\_enabled | Whether data plane proxy private link delegation is enabled. | `bool` | `false` | no |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be `default` if not set. | `string` | `"default"` | no |
 | environment | Project environment. | `string` | n/a | yes |
