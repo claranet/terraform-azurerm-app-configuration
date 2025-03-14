@@ -11,6 +11,9 @@ resource "azurerm_app_configuration" "main" {
   soft_delete_retention_days = var.soft_delete_retention_days
   local_auth_enabled         = var.local_auth_enabled
 
+  data_plane_proxy_authentication_mode             = var.data_plane_proxy_authentication_mode
+  data_plane_proxy_private_link_delegation_enabled = var.data_plane_proxy_private_link_delegation_enabled
+
   dynamic "identity" {
     for_each = var.identity[*]
     content {
@@ -36,6 +39,13 @@ resource "azurerm_app_configuration" "main" {
   }
 
   tags = merge(local.default_tags, var.extra_tags)
+
+  lifecycle {
+    precondition {
+      condition     = (var.data_plane_proxy_authentication_mode == "Local" && !var.data_plane_proxy_private_link_delegation_enabled) || (var.data_plane_proxy_authentication_mode == "Pass-through")
+      error_message = "`data_plane_proxy_private_link_delegation_enabled` cannot be set to `true` when `data_plane_proxy_authentication_mode` is set to `Local`"
+    }
+  }
 }
 
 moved {
