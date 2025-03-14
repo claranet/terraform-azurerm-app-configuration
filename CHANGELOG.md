@@ -1,3 +1,17 @@
+## 8.1.0 (2025-03-14)
+
+### Features
+
+* **GH-1:** add support of `data_plane_proxy_authentication_mode` and `data_plane_proxy_private_link_delegation_enabled` df75cbb
+
+### Miscellaneous Chores
+
+* **deps:** update dependency claranet/regions/azurerm to v8 86531cf
+* **deps:** update dependency trivy to v0.60.0 120dbc5
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.21.0 1c41346
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.22.0 5dbd41c
+* **deps:** update terraform claranet/regions/azurerm to ~> 7.4.0 5673f5d
+
 ## 8.0.0 (2025-02-07)
 
 ### ⚠ BREAKING CHANGES
