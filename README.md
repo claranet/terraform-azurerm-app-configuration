@@ -79,7 +79,7 @@ module "app_configuration" {
 | Name | Source | Version |
 |------|--------|---------|
 | azure\_region | claranet/regions/azurerm | ~> 8.0.0 |
-| diagnostics | claranet/diagnostic-settings/azurerm | ~> 8.0.0 |
+| diagnostics | claranet/diagnostic-settings/azurerm | ~> 8.1.0 |
 
 ## Resources
 
