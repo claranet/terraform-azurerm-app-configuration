@@ -70,28 +70,28 @@ module "app_configuration" {
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | azurecaf | >= 1.2.28 |
 | azurerm | ~> 4.31 |
 
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | azure\_region | claranet/regions/azurerm | ~> 8.0.0 |
 | diagnostics | claranet/diagnostic-settings/azurerm | ~> 8.2.0 |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [azurerm_app_configuration.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_configuration) | resource |
 | [azurecaf_name.app_configuration](https://registry.terraform.io/providers/claranet/azurecaf/latest/docs/data-sources/name) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | client\_name | Client name/account used in naming. | `string` | n/a | yes |
 | custom\_name | Custom App Configuration, generated if not set. | `string` | `""` | no |
 | custom\_replica | Create one or multiple custom AppConfig replica. | <pre>list(object({<br/>    location = string<br/>    name     = string<br/>  }))</pre> | `[]` | no |
@@ -122,7 +122,7 @@ module "app_configuration" {
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | endpoint | App Configuration Endpoint URL. |
 | id | App Configuration ID. |
 | identity\_principal\_id | App Configuration system identity principal ID. |
