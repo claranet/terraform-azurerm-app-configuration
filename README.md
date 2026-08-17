@@ -73,14 +73,14 @@ module "app_configuration" {
 | Name | Version |
 | ---- | ------- |
 | azurecaf | >= 1.2.28 |
-| azurerm | ~> 4.31 |
+| azurerm | ~> 5.0 |
 
 ## Modules
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
-| azure\_region | claranet/regions/azurerm | ~> 8.0.0 |
-| diagnostics | claranet/diagnostic-settings/azurerm | ~> 8.2.0 |
+| azure\_region | claranet/regions/azurerm | ~> 9.0.0 |
+| diagnostics | claranet/diagnostic-settings/azurerm | ~> 9.0.0 |
 
 ## Resources
 
