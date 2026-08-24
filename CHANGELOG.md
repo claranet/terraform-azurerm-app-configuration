@@ -1,3 +1,25 @@
+## 9.0.0 (2026-08-24)
+
+### ⚠ BREAKING CHANGES
+
+* **SREAA-368:** minimum OpenTofu raised to 1.12; AzureRM provider minimum
+raised to ~> 5.0; claranet regions and diagnostic-settings modules raised to
+~> 9.0.0. Consumers on OpenTofu < 1.12 or AzureRM < 5.0 must upgrade.
+
+### Features
+
+* **SREAA-368:** upgrade module to v9 (OpenTofu >= 1.12, AzureRM ~> 5.0) 2ce5671
+
+### Continuous Integration
+
+* **SREAA-368:** 👷 point the pipeline include back at the ci master branch 378c2de
+
+### Miscellaneous Chores
+
+* **deps:** update tools f768989
+* **SREAA-368:** 🔗 bump azurecaf to ~> 1.3.0 and resync the ci template files 8d765cc
+* **v9:** 🐛 synchronize common files and docs 00f2aab
+
 ## 8.1.4 (2026-07-20)
 
 ### Bug Fixes
