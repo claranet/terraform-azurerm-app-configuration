@@ -72,7 +72,7 @@ module "app_configuration" {
 
 | Name | Version |
 | ---- | ------- |
-| azurecaf | >= 1.2.28 |
+| azurecaf | ~> 1.3.0 |
 | azurerm | ~> 5.0 |
 
 ## Modules
